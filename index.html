@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+  <title>Mix It Up and Lightbox Example</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="mix category-a" data-ref="1">
+      <img src="images/artice1.png" alt="Image 1">
+    </div>
+    <div class="mix category-b" data-ref="2">
+      <img src="images/article2.png" alt="Image 2">
+    </div>
+    <div class="mix category-a" data-ref="3">
+      <img src="images/article3.png" alt="Image 3">
+    </div>
+    <div class="mix category-b" data-ref="4">
+      <img src="images/Rectangle 1461.jpg" alt="Image 4">
+    </div>
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="img01">
+  </div>
+
+  <script>
+    var mixer = mixitup('.container');
+    var lightbox = document.getElementById('lightbox');
+    var images = document.querySelectorAll('.mix');
+
+    images.forEach(function(image) {
+      image.addEventListener('click', function() {
+        var imgSrc = this.querySelector('img').src;
+        document.getElementById('img01').src = imgSrc;
+        lightbox.style.display = 'block';
+      });
+    });
+
+    var close = document.querySelector('.close');
+    close.addEventListener('click', function() {
+      lightbox.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
